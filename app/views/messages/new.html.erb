@@ -1,0 +1,26 @@
+<%= form_with model: @message, url: messages_path, local: true do |f| %>
+
+  <div class="weight-bold-text">
+    宛名
+  </div>
+  <%= f.text_area :to, class:"items-text", id:"item-name", placeholder:"宛名（「～～様へ」etc..）" %>
+
+  <div class="weight-bold-text">
+    送り主
+  </div>
+  <%= f.text_area :from, class:"items-text", id:"item-name", placeholder:"あなたの名前" %>
+
+  <div class="weight-bold-text">
+    日付
+  </div>
+  <%= f.text_area :date, class:"items-text", id:"item-name", placeholder:"「令和○年○月吉日」etc.." %>
+
+  <div class="weight-bold-text">
+    コメントの許可
+  </div>
+  <%= f.select :permit_comment, [["許可", "true"], ["許可しない", "false"]],class:"items-text", id:"item-name" %>
+
+  <%= f.submit "新規メッセージを作成する" ,class:"sell-btn" %>
+
+<% end %>
+
