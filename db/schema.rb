@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_16_023014) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_16_025544) do
+  create_table "letters", charset: "utf8mb3", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "message_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_letters_on_message_id"
+  end
+
   create_table "messages", charset: "utf8mb3", force: :cascade do |t|
     t.string "to"
     t.string "date"
@@ -35,5 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_16_023014) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "letters", "messages"
   add_foreign_key "messages", "users"
 end
