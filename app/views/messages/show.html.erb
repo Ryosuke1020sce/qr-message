@@ -40,6 +40,12 @@
     <br>
     <%= f.submit "メッセージを追加する" %>
   </div>
-
+  
+  <br>
+  <div class = "main-box">
+    ↓ＱＲコードはこちら↓
+    <div><%= qrcode_tag request.url, module_size: 4 %></div>
+  </div>  
+  <br><br>
 <% end %>
 <div>
