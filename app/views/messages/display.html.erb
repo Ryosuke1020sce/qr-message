@@ -1,0 +1,35 @@
+
+<div class = "main-box">
+  <h3>あなたへのメッセージ</h3> 
+  <div class = "sub-box">
+    <div>
+      <%= @message.to %>
+    </div>
+
+    <br>
+
+    <% if @letters.count != 0 %>
+      <% @letters.each do |l| %>
+      <div>
+        <%= simple_format(l.text) %>
+      </div>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= "#{@message.from} より" %>
+    </div>
+ 
+    <div>
+      <%= @message.date %>
+    </div>
+
+  </div>  
+
+  <div class = "main-box">
+    <br>
+    <div><%= qrcode_tag request.url, module_size: 4 %></div>
+    <br>
+  </div>  
+
+<div>

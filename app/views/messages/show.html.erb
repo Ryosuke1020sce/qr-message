@@ -45,7 +45,12 @@
   <div class = "main-box">
     ↓ＱＲコードはこちら↓
     <div><%= qrcode_tag request.url, module_size: 4 %></div>
+    <br>
+    <%= link_to "もどる", root_path %>
+    <br>
+    <%= link_to "実演表示", message_display_path(@message.id), target: :_blank, rel: "noopener noreferrer" %>
+    <br>
   </div>  
-  <br><br>
+
 <% end %>
 <div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:index, :new, :create, :show] do
     resources :letters, only: [:create]
+    get 'display', to: 'messages#display'
   end
   
 end
