@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @messages = Message.where(user_id: current_user.id)
   end
 
   def new
@@ -15,7 +16,10 @@ class MessagesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
 
+  def show
+    @message = Message.find(params[:id])
   end
 
   private
