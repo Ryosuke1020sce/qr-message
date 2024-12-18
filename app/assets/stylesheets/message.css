@@ -1,0 +1,27 @@
+.main-box{
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sub-box{
+  width: 300px;
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.message-area{
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+}
+
+.message-title{
+  margin: 20px 0 10px 0;
+}

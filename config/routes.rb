@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'messages#index'
 
-  resources :messages, only: [:index, :new, :create, :show]
+  resources :messages, only: [:index, :new, :create, :show] do
+    resources :letters, only: [:create]
+  end
   
 end

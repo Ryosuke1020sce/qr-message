@@ -20,6 +20,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @letters = Letter.where(message_id: @message.id)
+    @letter = Letter.new
   end
 
   private

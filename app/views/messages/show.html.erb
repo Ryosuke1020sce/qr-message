@@ -1,17 +1,45 @@
 
+<div class = "main-box">
+  <h3>メッセージ詳細</h3> 
+  <div class = "sub-box">
+    <div>
+      宛名：<%= @message.to %>
+    </div>
 
-  <div class="weight-bold-text">
-    宛名：<%= @message.to %>
+    <div>
+      送り主：<%= @message.from %>
+    </div>
+ 
+    <div>
+      日付：<%= @message.date %>
+    </div>
+ 
+    <div>
+      コメントの許可：<%= @message.permit_comment %>
+    </div>
+
+    <% if @letters.count != 0 %>
+      <% i = 1 %>
+      <% @letters.each do |l| %>
+      <br>
+      <%= "【メッセージ #{i}】" %>
+      <% i += 1 %>
+      <div>
+        <%= simple_format(l.text) %>
+      </div>
+      <% end %>
+    <% end %>
+
+  </div>  
+
+  <%= form_with model: @letter, url: message_letters_path(@message.id), local: true do |f| %>
+
+  <div class = "main-box">
+    <div class = "message-title">メッセージ</div>
+    <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください" %>
+    <br>
+    <%= f.submit "メッセージを追加する" %>
   </div>
 
-  <div class="weight-bold-text">
-    送り主：<%= @message.from %>
-  </div>
- 
-  <div class="weight-bold-text">
-    日付：<%= @message.date %>
-  </div>
- 
-  <div class="weight-bold-text">
-    コメントの許可：<%= @message.permit_comment %>
-  </div>
+<% end %>
+<div>
