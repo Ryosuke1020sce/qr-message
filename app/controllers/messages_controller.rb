@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:display]
 
   def index
     @messages = Message.where(user_id: current_user.id)

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :letters, only: [:create]
     get 'display', to: 'messages#display'
   end
+
+  resources :guests, only: [:show]
   
 end
