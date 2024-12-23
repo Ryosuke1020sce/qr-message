@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, except: [:display]
+  before_action :authenticate_user!, except: [:display, :uuid_disp]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :set_message_nest, only: [:display, :destroy_confirm]
 
@@ -45,6 +45,11 @@ class MessagesController < ApplicationController
   end
 
   def display
+    @letters = Letter.where(message_id: @message.id)
+  end
+
+  def uuid_disp
+    @message = Message.find_by(uuid: params[:uuid])
     @letters = Letter.where(message_id: @message.id)
   end
 

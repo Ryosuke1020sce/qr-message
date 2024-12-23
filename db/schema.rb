@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_16_025544) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_23_032321) do
   create_table "letters", charset: "utf8mb3", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "message_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_16_025544) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.string "uuid"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 

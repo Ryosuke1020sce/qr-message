@@ -1,0 +1,39 @@
+
+<div class = "main-box">
+  <h3>あなたへのメッセージ</h3> 
+  <div class = "sub-box">
+    <div>
+      <%= @message.to %>
+    </div>
+
+    <br>
+
+    <% if @letters.count != 0 %>
+      <% @letters.each do |l| %>
+      <div>
+        <%= simple_format(l.text) %>
+      </div>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= "#{@message.from} より" %>
+    </div>
+ 
+    <div>
+      <%= @message.date %>
+    </div>
+
+  </div>  
+
+  <% if user_signed_in? %>
+  <div class = "main-box">
+    <br>
+    ↓ アクセスするとメッセージが出るよ ↓
+    <div><%= qrcode_tag request.url, module_size: 4 %></div>
+    ユーザ名：saito　パスワード：9999
+    <br>
+  </div>  
+  <% end %>
+
+<div>

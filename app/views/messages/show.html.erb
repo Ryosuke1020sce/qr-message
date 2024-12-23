@@ -55,6 +55,10 @@
     <br>
     <%= link_to "実演表示(2)", guest_path(@message.id), target: :_blank, rel: "noopener noreferrer" %>
     <br>
+    <% if @message.uuid != nil %>
+      <%= link_to "実演表示(3)", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
+    <% end %>
+    <br>
   </div>  
 
 <% end %>
