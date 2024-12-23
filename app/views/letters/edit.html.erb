@@ -1,0 +1,16 @@
+
+<%= form_with model: @letter, url: message_letter_path(@message.id, @letter.id), local: true do |f| %>
+
+  <div class = "main-box">
+    <div class = "message-title">メッセージの編集</div>
+    <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください" %>
+    <br>
+    <%= f.submit "更新する" %>
+    <br>
+    <%= link_to "もどる", message_path(@message.id) %>
+    <br>
+    <%= link_to "このメッセージの削除", message_letter_path(@message.id, @letter.id), data: {turbo_method: :delete} %>
+  </div>
+  
+  
+<% end %>

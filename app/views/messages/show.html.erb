@@ -24,7 +24,10 @@
       <% i = 1 %>
       <% @letters.each do |l| %>
       <br>
-      <%= "【メッセージ #{i}】" %>
+      <div class = "letter-title">
+        <%= "【メッセージ #{i}】" %>
+        <%= link_to "〈編集〉", edit_message_letter_path(@message.id, l.id) %>
+      </div>  
       <% i += 1 %>
       <div>
         <%= simple_format(l.text) %>
