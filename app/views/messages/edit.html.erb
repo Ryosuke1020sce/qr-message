@@ -1,6 +1,6 @@
-<h3>メッセージの新規作成</h3>
+<h3>メッセージ設定の編集</h3>
 
-<%= form_with model: @message, url: messages_path, local: true do |f| %>
+<%= form_with model: @message, url: message_path(@message.id), local: true do |f| %>
 
   <div class="weight-bold-text">
     宛名
@@ -22,9 +22,10 @@
   </div>
   <%= f.select :permit_comment, [["許可", "true"], ["許可しない", "false"]],class:"items-text", id:"item-name" %>
   <br><br>
-  <%= f.submit "新規メッセージを作成する" ,class:"sell-btn" %>
+  <%= f.submit "設定の更新" ,class:"sell-btn" %>
   <br><br>
   <%= link_to 'もどる', root_path %>
-
+  <br><br>
+  <%= link_to "このメッセージの削除", message_destroy_confirm_path(@message.id) %>
 <% end %>
 

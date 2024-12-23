@@ -18,6 +18,8 @@
       コメントの許可：<%= @message.permit_comment %>
     </div>
 
+    <%= link_to "＜メッセージ設定の変更＞", edit_message_path(@message.id) %>
+
     <% if @letters.count != 0 %>
       <% i = 1 %>
       <% @letters.each do |l| %>
