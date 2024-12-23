@@ -26,10 +26,14 @@
 
   </div>  
 
+  <% if user_signed_in? %>
   <div class = "main-box">
     <br>
+    ↓ アクセスするとメッセージが出るよ ↓
     <div><%= qrcode_tag request.url, module_size: 4 %></div>
+    ユーザ名：saito　パスワード：9999
     <br>
   </div>  
+  <% end %>
 
 <div>

@@ -9,11 +9,13 @@
 .sub-box{
   width: 300px;
   border: 1px gray solid;
+  background-color: rgb(240, 235, 250);
   border-radius: 5px;
   padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  box-shadow: 10px 10px 5px grey;
 }
 
 .message-area{
