@@ -16,9 +16,14 @@
   <% if @comments.count != 0 %>
     <h3>返信</h3> 
     <% @comments.each do |c| %>
-      <div class = "sub-box">
+      <% if c.from == "あなた" %>
+        <% s_class = "sub-box2" %>
+      <% else %>
+        <% s_class = "sub-box" %>
+      <% end %>
+      <div class = <%= s_class %>>
         <div><%= simple_format(c.text) %></div>
-        <div><%= c.created_at %></div>
+        <div><%= "　　#{c.from}　#{c.created_at}" %></div>
       </div>
       <br>
     <% end %>
@@ -50,7 +55,17 @@
     <br>
     <%= f.submit "送信する" %>
   </div>
-  
+
+  <% if user_signed_in? %>
+    <% from = @message.from %>
+  <% else %>
+    <% from = "あなた" %>
+  <% end %>
+
+  <div class = "hidden">
+    <%= f.text_field :from, value: from %>  
+  </div>
+
   <% end %>
 
 <div>

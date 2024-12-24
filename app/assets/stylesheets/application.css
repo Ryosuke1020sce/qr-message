@@ -24,4 +24,8 @@ body{
   font-family: "Zen Kaku Gothic New", serif;
 }
 
+.hidden{
+  display: none;
+}
+
 

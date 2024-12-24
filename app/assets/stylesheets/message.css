@@ -6,16 +6,22 @@
   flex-direction: column;
 }
 
-.sub-box{
+.sub-box, .sub-box2{
   width: 300px;
   border: 1px gray solid;
-  background-color: rgb(240, 235, 250);
   border-radius: 5px;
   padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   box-shadow: 10px 10px 5px grey;
+}
+
+.sub-box{
+  background-color: rgb(240, 235, 250);
+}
+.sub-box2{
+  background-color: rgb(243, 250, 235);
 }
 
 .message-area{
