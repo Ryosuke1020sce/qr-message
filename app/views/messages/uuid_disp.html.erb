@@ -36,6 +36,12 @@
   </div>  
   <% end %>
 
+  <% if flash[:notice] %>
+    <script>
+      alert("<%= j flash[:notice] %>");
+    </script>
+  <% end %>
+
   <%= form_with model: @comment, url: message_comments_path(@message.id), local: true do |f| %>
 
   <div class = "main-box">
