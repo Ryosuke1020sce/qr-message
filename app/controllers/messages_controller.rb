@@ -52,6 +52,7 @@ class MessagesController < ApplicationController
     @message = Message.find_by(uuid: params[:uuid])
     @letters = Letter.where(message_id: @message.id)
     @comment = Comment.new
+    @comments = Comment.where(message_id: @message.id)
   end
 
   private

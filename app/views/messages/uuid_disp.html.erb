@@ -2,29 +2,29 @@
 <div class = "main-box">
   <h3>あなたへのメッセージ</h3> 
   <div class = "sub-box">
-    <div>
-      <%= @message.to %>
-    </div>
-
+    <div><%= @message.to %></div>
     <br>
-
     <% if @letters.count != 0 %>
       <% @letters.each do |l| %>
-      <div>
-        <%= simple_format(l.text) %>
-      </div>
+      <div><%= simple_format(l.text) %></div>
       <% end %>
     <% end %>
-
-    <div>
-      <%= "#{@message.from} より" %>
-    </div>
- 
-    <div>
-      <%= @message.date %>
-    </div>
-
+    <div><%= "#{@message.from} より" %></div>
+    <div><%= @message.date %></div>
   </div>  
+
+  <% if @comments.count != 0 %>
+    <h3>返信</h3> 
+    <% @comments.each do |c| %>
+      <div class = "sub-box">
+        <div><%= simple_format(c.text) %></div>
+        <div><%= c.created_at %></div>
+      </div>
+      <br>
+    <% end %>
+
+  <% end %>
+
 
   <% if user_signed_in? %>
   <div class = "main-box">
