@@ -3,3 +3,4 @@ class AddUuidToMessages < ActiveRecord::Migration[7.0]
     add_column :messages, :uuid, :string
   end
 end
+
