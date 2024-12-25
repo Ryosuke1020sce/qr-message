@@ -8,7 +8,7 @@
 
 .sub-box, .sub-box2{
   width: 300px;
-  border: 1px gray solid;
+  /* border: 1px gray solid; */
   border-radius: 5px;
   padding: 30px;
   display: flex;
