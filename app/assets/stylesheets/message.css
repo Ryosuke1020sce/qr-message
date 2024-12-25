@@ -9,12 +9,12 @@
 .sub-box, .sub-box2{
   width: 300px;
   /* border: 1px gray solid; */
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .sub-box{
@@ -22,6 +22,16 @@
 }
 .sub-box2{
   background-color: rgb(243, 250, 235);
+}
+
+.message-box {
+  margin-bottom: 20px;
+}
+
+.message-to {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
 
 .message-area{
@@ -36,4 +46,28 @@
 
 .letter-title{
   display: flex;
+}
+
+.letter-text {
+  margin-left: 5px;
+  color: #242424;
+}
+
+.message-from,
+.message-date {
+  margin-left: auto;
+  font-size: 16px;
+}
+
+.message-from {
+  margin-bottom: 5px;
+}
+
+.access-please{
+  margin-bottom: 10px;
+}
+
+.user-name{
+  font-size: 18px;
+  margin-top: 10px;
 }

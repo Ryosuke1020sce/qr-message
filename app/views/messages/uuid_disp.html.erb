@@ -1,16 +1,22 @@
 
 <div class = "main-box">
   <h3>あなたへのメッセージ</h3> 
-  <div class = "sub-box">
-    <div><%= @message.to %></div>
+  <div class = "sub-box message-box">
+    <div class="message-to"><%= @message.to %></div>
     <br>
     <% if @letters.count != 0 %>
       <% @letters.each do |l| %>
-      <div><%= simple_format(l.text) %></div>
+      <div class="letter-text">
+        <%= simple_format(l.text) %>
+      </div>
       <% end %>
     <% end %>
-    <div><%= "#{@message.from} より" %></div>
-    <div><%= @message.date %></div>
+    <div class="message-from">
+      <%= "#{@message.from} より" %>
+    </div>
+    <div class="message-date">
+      <%= @message.date %>
+    </div>
   </div>
 
   <% if @comments.count != 0 %>
@@ -23,7 +29,7 @@
       <% end %>
       <div class = <%= s_class %>>
         <div><%= simple_format(c.text) %></div>
-        <div><%= "　　#{c.from}　#{c.created_at}" %></div>
+        <div class = "message-from"><%= "　　#{c.from}　#{date_time(c.created_at)}" %></div>
       </div>
       <br>
     <% end %>
@@ -32,9 +38,10 @@
   <% if user_signed_in? %>
   <div class = "main-box">
     <br>
-    ↓ アクセスするとメッセージが出るよ ↓
+    <div class = "access-please"><%= @message.to %></div>
+    <div class = "access-please">↓ アクセスするとメッセージが出るよ ↓</div>
     <div><%= qrcode_tag request.url, module_size: 4 %></div>
-    ユーザ名：saito　パスワード：9999
+    <div class = "user-name">ユーザ名：saito　パスワード：9999</div>
     <br>
   </div>  
   <% end %>
@@ -45,24 +52,27 @@
     </script>
   <% end %>
 
+  <% if @message.permit_comment == true %>
   <%= form_with model: @comment, url: message_comments_path(@message.id), local: true do |f| %>
 
-  <div class = "main-box">
-    <div class = "message-title">返信</div>
-    <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください！" %>
-    <br>
-    <%= f.submit "送信する" %>
-  </div>
+    <div class = "main-box">
+      <div class = "message-title">返信</div>
+      <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください！" %>
+      <br>
+      <%= f.submit "送信する" %>
+    </div>
 
-  <% if user_signed_in? %>
-    <% from = @message.from %>
-  <% else %>
-    <% from = "あなた" %>
+    <% if user_signed_in? %>
+      <% from = @message.from %>
+    <% else %>
+      <% from = "あなた" %>
+    <% end %>
+
+    <div class = "hidden">
+      <%= f.text_field :from, value: from %>  
+    </div>
+
   <% end %>
-
-  <div class = "hidden">
-    <%= f.text_field :from, value: from %>  
-  </div>
-
   <% end %>
+  <br>
 <div>
