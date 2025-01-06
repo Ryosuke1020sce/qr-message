@@ -25,3 +25,13 @@
     </li>
   <% end %>
   </ul>
+
+<br>
+<br>他のユーザー
+  <ul>
+  <% @users.each do |u| %>
+    <li>
+    <%= link_to u.email, "/user_show/#{u.id}" %>
+    </li>
+  <% end %>
+  </ul>

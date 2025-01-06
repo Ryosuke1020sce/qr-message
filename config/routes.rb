@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'messages#index'
 
+  get 'user_show/:user_id', to: 'messages#user_show'
+
   resources :messages, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :letters, only: [:create, :edit, :update, :destroy]
     get 'display', to: 'messages#display'

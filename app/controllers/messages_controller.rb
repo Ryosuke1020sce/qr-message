@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.where(user_id: current_user.id)
+    @users = User.all
   end
 
   def new
@@ -53,6 +54,10 @@ class MessagesController < ApplicationController
     @letters = Letter.where(message_id: @message.id)
     @comment = Comment.new
     @comments = Comment.where(message_id: @message.id)
+  end
+
+  def user_show
+    @user = User.find(params[:user_id])
   end
 
   private
