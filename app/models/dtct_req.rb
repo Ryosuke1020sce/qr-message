@@ -1,0 +1,2 @@
+class DtctReq < ApplicationRecord
+end

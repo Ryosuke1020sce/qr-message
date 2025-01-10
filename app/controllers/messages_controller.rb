@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
   def show
     @letters = Letter.where(message_id: @message.id)
     @letter = Letter.new
+    @dtct_reqs = DtctReq.where(message_id: @message.id)
   end
 
   def edit
@@ -54,6 +55,12 @@ class MessagesController < ApplicationController
     @letters = Letter.where(message_id: @message.id)
     @comment = Comment.new
     @comments = Comment.where(message_id: @message.id)
+    if user_signed_in?
+      x = current_user[:nickname] 
+    else
+      x = "guest(#{request.remote_ip})" 
+    end
+    DtctReq.create(memo: x,message_id: @message.id)
   end
 
   def user_show

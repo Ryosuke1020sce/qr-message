@@ -5,6 +5,7 @@ module ApplicationHelper
   end
 
   def japan_date(date)
+    date = date.to_datetime + (9.0/24)
     y = date.year
     m = date.month
     d = date.day
@@ -12,11 +13,17 @@ module ApplicationHelper
   end
 
   def date_time(date)
-    y = date.year
+    date = date.to_datetime + (9.0/24)
+    y = date.year 
     m = date.month
     d = date.day
     h = date.hour
     min = date.min
+    if min == 0
+      min = "00"
+    elsif min < 10
+      min = "0#{min}"
+    end
     return "#{y}/#{m}/#{d} #{h}:#{min}"
   end
 end

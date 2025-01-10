@@ -59,6 +59,15 @@
       <%= link_to "実演表示(3)", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
     <% end %>
     <br>
+    <% if @dtct_reqs.count != 0 %>
+      <br>閲覧履歴（<%= @dtct_reqs.count %>回）<br>
+      <div>
+      <% @dtct_reqs.each do |d| %>
+        <%= "#{d.memo}:#{date_time(d.created_at)} " %>
+      <% end %>
+      </div>
+      <br>
+    <% end %>
   </div>  
 
 <% end %>

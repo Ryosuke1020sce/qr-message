@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_24_004524) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_10_012828) do
   create_table "comments", charset: "utf8mb3", force: :cascade do |t|
     t.text "text", null: false
     t.string "from"
@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_24_004524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["message_id"], name: "index_comments_on_message_id"
+  end
+
+  create_table "dtct_reqs", charset: "utf8mb3", force: :cascade do |t|
+    t.string "memo"
+    t.bigint "message_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_dtct_reqs_on_message_id"
   end
 
   create_table "letters", charset: "utf8mb3", force: :cascade do |t|
@@ -54,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_24_004524) do
   end
 
   add_foreign_key "comments", "messages"
+  add_foreign_key "dtct_reqs", "messages"
   add_foreign_key "letters", "messages"
   add_foreign_key "messages", "users"
 end
