@@ -57,9 +57,9 @@
 
     <div class = "main-box">
       <div class = "message-title">返信</div>
-      <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください！" %>
+      <%= f.text_area :text, class: "message-area",  placeholder:"ここにメッセージを記入してください！※記入後、「送信」を押してください。齋藤にメールが送られますので、すぐ気付きます！" %>
       <br>
-      <%= f.submit "送信する" %>
+      <%= f.submit "送信" %>
     </div>
 
     <% if user_signed_in? %>

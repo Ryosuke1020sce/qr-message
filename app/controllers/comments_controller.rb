@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @user = User.find(@message.user_id)
 
     if @comment.save
-      flash[:notice] = "返信しました！"
+      flash[:notice] = "返信ありがとうございます！"
       CommentMailer.detect_comment_email(@user, @message, @comment).deliver_now
       redirect_to "/messages/#{@message.id}/uuid_disp/#{@message.uuid}"
     else
