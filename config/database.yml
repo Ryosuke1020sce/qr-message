@@ -21,7 +21,7 @@ development:
   database: qr_message_development
   username: root
   password:
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
 
 test:
   adapter: mysql2
