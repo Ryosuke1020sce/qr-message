@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
-
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+  
   root to: 'messages#index'
 
   get 'user_show/:user_id', to: 'messages#user_show'
