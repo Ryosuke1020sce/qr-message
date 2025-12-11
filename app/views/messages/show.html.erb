@@ -59,6 +59,8 @@
       <%= link_to "実演表示", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
     <% end %>
     <br>
+    <%= link_to "リンクの新規作成ページへ", new_message_link_path(@message) %>
+    <br>
     <% if @dtct_reqs.count != 0 %>
       <br>閲覧履歴（<%= @dtct_reqs.count %>回）<br>
       <div>
@@ -69,6 +71,6 @@
       <br>
     <% end %>
   </div>  
-
+  
 <% end %>
 <div>

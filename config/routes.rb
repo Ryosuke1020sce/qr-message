@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'uuid_disp/:uuid', to: 'messages#uuid_disp', as: :uuid_disp
     end    
     resources :comments, only: [:create]
+    resources :links, only: [:new, :create, :destroy]
   end
 
   resources :guests, only: [:show]
