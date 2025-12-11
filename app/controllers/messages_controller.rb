@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
     @letters = Letter.where(message_id: @message.id)
     @letter = Letter.new
     @dtct_reqs = DtctReq.where(message_id: @message.id)
+    @links = Link.where(message_id: @message.id)
   end
 
   def edit

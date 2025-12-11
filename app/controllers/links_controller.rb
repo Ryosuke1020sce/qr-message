@@ -4,13 +4,18 @@ class LinksController < ApplicationController
   def new
     @link = @message.links.new
     @messages = Message.where.not(id: @message.id)
+    @linked_ids = Link.where(message_id: @message.id).pluck(:linked_message_id)
   end
 
   def create
-    @link = Link.new(message_id: params[:parent_message_id])
+    @link = Link.new(
+      message_id: @message.id,
+      linked_message_id: params[:linked_message_id]
+    )
     if @link.save
       redirect_to message_path(@message), notice: "リンクを追加しました"
     else
+      @messages = Message.where.not(id: @message.id)
       render new_message_link_path(@message), status: :unprocessable_entity
     end
   end

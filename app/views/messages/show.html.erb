@@ -61,6 +61,20 @@
     <br>
     <%= link_to "リンクの新規作成ページへ", new_message_link_path(@message) %>
     <br>
+
+    <h3>リンク済みメッセージ</h3>
+
+    <% if @links.any? %>
+      <% @links.each do |link| %>
+        <% linked = Message.find(link.linked_message_id) %>
+        <div>
+          ・ <%=  linked.to %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>リンクはありません</p>
+    <% end %>
+
     <% if @dtct_reqs.count != 0 %>
       <br>閲覧履歴（<%= @dtct_reqs.count %>回）<br>
       <div>
@@ -71,6 +85,6 @@
       <br>
     <% end %>
   </div>  
-  
+
 <% end %>
 <div>

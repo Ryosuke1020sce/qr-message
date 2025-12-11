@@ -1,11 +1,15 @@
 <h2>リンクに設定するメッセージを選んでください</h2>
 
-<ul>
-  <% @messages.each do |ms| %>
-    <li>
-      <%= link_to ms.to, message_links_path(@message,
-          parent_message_id: ms.id),
-          data: { turbo_method: :post } %>
-    </li>
-  <% end %>
-</ul>
+<% @messages.each do |ms| %>
+  <div>
+    <% if @linked_ids.include?(ms.id) %>
+      <!-- すでにリンク済みなら表示だけ -->
+      ✔ <%= ms.to %>（リンク済み）
+    <% else %>
+      <!-- リンクしていないなら作成ボタン -->
+      <%= button_to "リンクする: #{ms.to}",
+            message_links_path(@message, linked_message_id: ms.id),
+            method: :post %>
+    <% end %>
+  </div>
+<% end %>
