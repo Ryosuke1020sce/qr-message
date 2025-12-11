@@ -59,11 +59,10 @@
       <%= link_to "実演表示", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
     <% end %>
     <br>
-    <%= link_to "リンクの新規作成ページへ", new_message_link_path(@message) %>
+    <%= link_to "リンクの設定ページへ", new_message_link_path(@message) %>
     <br>
 
-    <h3>リンク済みメッセージ</h3>
-
+    <h4>リンク済みメッセージ</h4>
     <% if @links.any? %>
       <% @links.each do |link| %>
         <% linked = Message.find(link.linked_message_id) %>
@@ -72,7 +71,7 @@
         </div>
       <% end %>
     <% else %>
-      <p>リンクはありません</p>
+      <p>※リンクはありません</p>
     <% end %>
 
     <% if @dtct_reqs.count != 0 %>

@@ -21,11 +21,12 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    @link = @message.links.find(params[:id])
-    @link.destroy
-    redirect_to @message, notice: "リンクを削除しました"
+    @message = Message.find(params[:message_id])
+    @link = Link.find(params[:id])
+    @link.destroy  
+    redirect_to message_path(@message), notice: "リンクを削除しました"
   end
-
+  
   private
 
   def set_message

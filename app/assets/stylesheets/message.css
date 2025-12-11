@@ -71,3 +71,19 @@
   font-size: 18px;
   margin-top: 10px;
 }
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 横の余白 */
+  margin-bottom: 8px;
+}
+
+.link-label {
+  /* 必要なら文字関連の調整もできる */
+}
+
+.link-action form {
+  margin: 0; /* Railsのbutton_toはformタグが勝手に余白をつけるので消す */
+  display: inline-block;
+}

@@ -1,15 +1,30 @@
-<h2>リンクに設定するメッセージを選んでください</h2>
+<h3>リンクに設定するメッセージを選んでください</h3>
 
 <% @messages.each do |ms| %>
-  <div>
+  <div class="link-row">
     <% if @linked_ids.include?(ms.id) %>
-      <!-- すでにリンク済みなら表示だけ -->
-      ✔ <%= ms.to %>（リンク済み）
+
+      <span class="link-label">
+        ✔ <%= ms.to %>（リンク済み）
+      </span>
+
+      <% link = Link.find_by(message_id: @message.id, linked_message_id: ms.id) %>
+      <span class="link-action">
+        <%= button_to "削除",
+              message_link_path(@message, link),
+              method: :delete,
+              data: { confirm: "削除しますか？" } %>
+      </span>
+
     <% else %>
-      <!-- リンクしていないなら作成ボタン -->
-      <%= button_to "リンクする: #{ms.to}",
-            message_links_path(@message, linked_message_id: ms.id),
-            method: :post %>
+
+      <span class="link-action">
+        ⚫︎<%= button_to "リンクする: #{ms.to}",
+              message_links_path(@message, linked_message_id: ms.id),
+              method: :post %>
+      </span>
+
     <% end %>
   </div>
 <% end %>
+
