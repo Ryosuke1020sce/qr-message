@@ -51,9 +51,9 @@
     <br>
     <%= link_to "もどる", root_path %>
     <%# <br> %>
-    <%# link_to "実演表示(1)", message_display_path(@message.id), target: :_blank, rel: "noopener noreferrer" %> %>
+    <%# link_to "実演表示(1)", message_display_path(@message.id), target: :_blank, rel: "noopener noreferrer" %>
     <%# <br> %>
-    <%# link_to "実演表示(2)", guest_path(@message.id), target: :_blank, rel: "noopener noreferrer" %> %>
+    <%# link_to "実演表示(2)", guest_path(@message.id), target: :_blank, rel: "noopener noreferrer" %> 
     <br>
     <% if @message.uuid != nil %>
       <%= link_to "実演表示", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
