@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_12_11_062216) do
+ActiveRecord::Schema[7.0].define(version: 2025_12_11_072049) do
   create_table "comments", charset: "utf8mb3", force: :cascade do |t|
     t.text "text", null: false
     t.string "from"
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_12_11_062216) do
     t.bigint "message_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "linked_message_id", null: false
     t.index ["message_id"], name: "index_links_on_message_id"
   end
 
