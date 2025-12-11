@@ -29,7 +29,8 @@
 - belongs_to :user
 - has_many :letters
 - has_many :comments
-- has_many :dtct_req
+- has_many :dtct_reqs
+- has_many :links
 
 
 ## letters テーブル
@@ -57,11 +58,21 @@
 - belongs_to :message
 
 
-## dtct_req テーブル
+## dtct_reqs テーブル
 
 | Column     | Type       | Options     |
 | ---------- | ---------- | ----------- |
 | memo       | string     |             |
+| message    | references | null: false, foreign_key: true |
+
+## Association
+
+- belongs_to :message
+
+## links テーブル
+
+| Column     | Type       | Options     |
+| ---------- | ---------- | ----------- |
 | message    | references | null: false, foreign_key: true |
 
 ## Association
