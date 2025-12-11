@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     resources :letters, only: [:create, :edit, :update, :destroy]
     get 'display', to: 'messages#display'
     get 'destroy_confirm', to: 'messages#destroy_confirm'
-    get 'uuid_disp/:uuid', to: 'messages#uuid_disp'
+    # get 'uuid_disp/:uuid', to: 'messages#uuid_disp'
+    member do
+      get 'uuid_disp/:uuid', to: 'messages#uuid_disp', as: :uuid_disp
+    end    
     resources :comments, only: [:create]
   end
 
