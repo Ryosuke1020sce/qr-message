@@ -13,7 +13,7 @@ class LinksController < ApplicationController
       linked_message_id: params[:linked_message_id]
     )
     if @link.save
-      redirect_to message_path(@message), notice: "リンクを追加しました"
+      redirect_to message_path(@message)
     else
       @messages = Message.where.not(id: @message.id)
       render new_message_link_path(@message), status: :unprocessable_entity
@@ -24,7 +24,7 @@ class LinksController < ApplicationController
     @message = Message.find(params[:message_id])
     @link = Link.find(params[:id])
     @link.destroy  
-    redirect_to message_path(@message), notice: "リンクを削除しました"
+    redirect_to message_path(@message) 
   end
   
   private

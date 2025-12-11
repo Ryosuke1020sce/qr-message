@@ -56,7 +56,7 @@
     <%# link_to "実演表示(2)", guest_path(@message.id), target: :_blank, rel: "noopener noreferrer" %> 
     <br>
     <% if @message.uuid != nil %>
-      <%= link_to "実演表示", "/messages/#{@message.id}/uuid_disp/#{@message.uuid}", target: :_blank, rel: "noopener noreferrer" %>
+      <%= link_to "実演表示", uuid_disp_message_path(@message, uuid: @message.uuid), target: :_blank, rel: "noopener noreferrer" %>
     <% end %>
     <br>
     <%= link_to "リンクの設定ページへ", new_message_link_path(@message) %>
@@ -67,7 +67,7 @@
       <% @links.each do |link| %>
         <% linked = Message.find(link.linked_message_id) %>
         <div>
-          ・ <%=  linked.to %>
+          ・ <%=  link_to linked.to, uuid_disp_message_path(linked, uuid: linked.uuid) %>
         </div>
       <% end %>
     <% else %>

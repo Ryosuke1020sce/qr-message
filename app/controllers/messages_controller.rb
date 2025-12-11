@@ -54,6 +54,7 @@ class MessagesController < ApplicationController
   def uuid_disp
     @messages = Message.all
     @message = Message.find_by(uuid: params[:uuid])
+    @links = Link.where(message_id: @message.id)
     @letters = Letter.where(message_id: @message.id)
     @comment = Comment.new
     @comments = Comment.where(message_id: @message.id)

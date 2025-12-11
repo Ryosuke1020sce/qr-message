@@ -20,13 +20,26 @@
   </div>
 
   <%# 仮領域 %>
-  <div class = "sub-box message-box"> 
+  
+    
     <% @messages.each do |ms| %>
       <div class="letter-text">
-        <%= link_to ms.to, uuid_disp_message_path(ms, uuid: ms.uuid), target: :_blank, rel: "noopener noreferrer" %>
+        <% link_to ms.to, uuid_disp_message_path(ms, uuid: ms.uuid), target: :_blank, rel: "noopener noreferrer" %>
       </div><br> 
     <% end %>
-  </div>
+
+    <% if @links.any? %>
+      <div class = "sub-box message-box"> 
+      あなたへの他のメッセージ
+      <% @links.each do |link| %>
+        <% linked = Message.find(link.linked_message_id) %>
+        <div>
+          ・ <%=  link_to linked.to, uuid_disp_message_path(linked, uuid: linked.uuid) %>
+        </div>
+      <% end %>  
+      </div>
+    <% end %>
+
   <%# /////// %>
 
   <% if @comments.count != 0 %>
