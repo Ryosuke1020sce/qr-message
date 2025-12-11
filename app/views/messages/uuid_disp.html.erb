@@ -23,7 +23,7 @@
   <% @messages.each do |ms| %>
     <div class = "sub-box message-box"> 
       <div class="letter-text">
-      <%= link_to ms.to, uuid_disp_message_path(ms.id, ms.uuid) %>
+      <%= link_to ms.to, uuid_disp_message_path(ms, uuid: ms.uuid) %>
       </div>
     </div><br> 
     <%=  %>
